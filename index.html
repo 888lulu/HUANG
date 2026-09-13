@@ -18,6 +18,8 @@
   --serif:"Noto Serif SC","Songti SC",serif;
   --sans:"Noto Sans SC","PingFang SC",sans-serif;
   --num:"Oswald","Noto Sans SC",sans-serif;
+  --bounce:cubic-bezier(0.34,1.56,0.64,1);
+  --r:4px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -59,8 +61,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(250,245,238,.88);backdrop-f
 .role-tags span{border:1px solid rgba(244,169,95,.4);padding:7px 16px;font-size:14px;border-radius:2px;color:#F0DCC2}
 .hero p{color:#C9B8A2;max-width:520px;font-size:16px}
 .hero-photo{position:relative}
-.hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px;filter:saturate(.92)}
-.hero-photo::after{content:"";position:absolute;inset:0;border:1px solid rgba(244,169,95,.35);border-radius:3px;transform:translate(14px,14px);pointer-events:none}
+.hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r);filter:saturate(.92)}
+.hero-photo::after{content:"";position:absolute;inset:0;border:1px solid rgba(244,169,95,.35);border-radius:var(--r);transform:translate(14px,14px);pointer-events:none}
 
 /* 数据条 */
 .stat-band{background:var(--orange-deep)}
@@ -71,16 +73,19 @@ nav{position:sticky;top:0;z-index:50;background:rgba(250,245,238,.88);backdrop-f
 
 /* ============ 通用区块 ============ */
 section.block{max-width:1180px;margin:0 auto;padding:96px 28px}
-.sec-head{margin-bottom:52px}
+.sec-head{margin-bottom:52px;position:relative}
 .sec-head .k{font-family:var(--num);letter-spacing:.36em;color:var(--orange-deep);font-size:13px}
 .sec-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,4vw,42px);margin-top:10px;letter-spacing:.04em}
 .sec-head .linebar{width:54px;height:3px;background:var(--orange);margin-top:18px;border-radius:2px}
+.sec-no{position:absolute;top:-16px;right:0;font-family:var(--num);font-weight:600;font-size:54px;line-height:1;color:rgba(224,122,53,.14);letter-spacing:.04em}
 
 .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
 .about-text p{margin-bottom:18px;font-size:16.5px;color:var(--ink-soft)}
 .focus-list{display:flex;flex-direction:column;gap:16px}
-.focus-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:26px 28px;transition:.3s}
+.focus-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 28px;transition:border-color .3s,box-shadow .3s,transform .4s var(--bounce)}
 .focus-card:hover{transform:translateX(6px);border-color:var(--orange);box-shadow:0 12px 30px rgba(200,90,35,.1)}
+.focus-card h3 svg{transition:transform .4s var(--bounce)}
+.focus-card:hover h3 svg{transform:rotate(-8deg) scale(1.1)}
 .focus-card h3{font-family:var(--serif);font-size:20px;color:var(--orange-deep);display:flex;align-items:center;gap:12px}
 .focus-card h3 svg{flex:none}
 .focus-card p{font-size:14.5px;color:var(--gray);margin-top:8px}
@@ -92,15 +97,39 @@ section.block{max-width:1180px;margin:0 auto;padding:96px 28px}
 .honor-col h3{font-family:var(--serif);font-size:23px;margin-bottom:26px;padding-bottom:14px;border-bottom:2px solid var(--orange)}
 .timeline{list-style:none;display:flex;flex-direction:column;gap:22px}
 .timeline li{position:relative;padding-left:26px}
-.timeline li::before{content:"";position:absolute;left:2px;top:9px;width:9px;height:9px;background:var(--orange);border-radius:50%}
+.timeline li::before{content:"";position:absolute;left:2px;top:9px;width:9px;height:9px;background:var(--orange);border-radius:50%;box-shadow:0 0 0 3px rgba(224,122,53,.15);transition:transform .35s var(--bounce)}
+.timeline li:hover::before{transform:scale(1.3)}
 .timeline li::after{content:"";position:absolute;left:6px;top:22px;bottom:-18px;width:1px;background:var(--line)}
 .timeline li:last-child::after{display:none}
 .timeline .yr{font-family:var(--num);color:var(--orange-deep);font-size:14px;letter-spacing:.12em}
 .timeline .tt{font-weight:500;font-size:16px;margin:2px 0 2px}
+.timeline .ds{font-size:14px;color:var(--gray)}
+.timeline.simple li::after{display:none}
+
+/* ============ 学术成果 ============ */
+.aca-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.aca-col{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px 26px;transition:border-color .3s,box-shadow .3s,transform .4s var(--bounce)}
+.aca-col:hover{transform:translateY(-4px);border-color:var(--orange);box-shadow:0 12px 28px rgba(200,90,35,.09)}
+.aca-col h3{font-family:var(--serif);font-size:19px;color:var(--orange-deep);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.aca-col ul{list-style:none;display:flex;flex-direction:column;gap:16px}
+.aca-col li{font-size:14px;line-height:1.65;padding-left:16px;position:relative}
+.aca-col li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;background:var(--orange);border-radius:50%;transition:transform .35s var(--bounce)}
+.aca-col li:hover::before{transform:translateY(-3px) scale(1.3)}
+.aca-col li .en{font-family:var(--num);font-size:13px;letter-spacing:.02em;display:block;color:var(--ink)}
+.aca-col li .src{color:var(--gray);font-size:12.5px;display:block;margin-top:2px}
+.aca-col li .todo{color:var(--orange-deep);font-size:12px}
+/* ============ 体育文化传播 ============ */
+.spread-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.spread-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 28px;transition:border-color .3s,box-shadow .3s,transform .4s var(--bounce)}
+.spread-card:hover{border-color:var(--orange);transform:translateY(-5px);box-shadow:0 14px 32px rgba(200,90,35,.1)}
+.spread-card .ico{width:46px;height:46px;border-radius:50%;background:rgba(224,122,53,.12);display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:transform .4s var(--bounce)}
+.spread-card:hover .ico{transform:scale(1.12) rotate(-6deg)}
+.spread-card h3{font-family:var(--serif);font-size:18.5px;margin-bottom:8px}
+.spread-card p{font-size:14px;color:var(--gray);line-height:1.65}
 
 /* ============ 影像墙 ============ */
 .gallery-cols{column-count:3;column-gap:18px}
-.g-item{break-inside:avoid;margin-bottom:18px;border-radius:4px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.g-item{break-inside:avoid;margin-bottom:18px;border-radius:var(--r);overflow:hidden;background:#fff;border:1px solid var(--line)}
 .g-item img{width:100%;transition:transform .6s ease,opacity .7s ease;opacity:0;background:var(--ivory-deep)}
 .g-item img.loaded{opacity:1}
 .g-item:hover img.loaded{transform:scale(1.05)}
@@ -113,10 +142,11 @@ section.block{max-width:1180px;margin:0 auto;padding:96px 28px}
 .creed .big{font-family:var(--serif);font-weight:900;font-size:clamp(30px,5.4vw,54px);letter-spacing:.2em;text-indent:.2em}
 .creed .big i{color:var(--orange);font-style:normal}
 .creed .en{font-family:var(--num);letter-spacing:.34em;color:var(--apricot);margin-top:18px;font-size:14px}
+.creed-no{font-family:var(--num);letter-spacing:.3em;color:rgba(244,169,95,.45);font-size:13px;margin-bottom:28px}
 .creed p{margin-top:34px;color:#C4B39C;font-size:16px}
 .contact-cta{margin-top:40px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.cta-btn{min-height:48px;display:inline-flex;align-items:center;padding:12px 30px;background:var(--orange);color:#241D18;font-weight:500;border-radius:3px;letter-spacing:.06em;transition:.3s}
-.cta-btn:hover{background:var(--apricot);transform:translateY(-2px)}
+.cta-btn{min-height:48px;display:inline-flex;align-items:center;padding:12px 30px;background:var(--orange);color:#241D18;font-weight:500;border-radius:var(--r);letter-spacing:.06em;transition:background .3s,transform .4s var(--bounce)}
+.cta-btn:hover{background:var(--apricot);transform:translateY(-3px)}
 .cta-btn.ghost{background:transparent;color:var(--apricot);border:1px solid rgba(244,169,95,.5)}
 .cta-btn.ghost:hover{background:rgba(224,122,53,.18)}
 
@@ -140,6 +170,7 @@ footer{background:var(--ink-soft);color:#D8C7B0}
   .hero-photo{max-width:420px}
   .about-grid{grid-template-columns:1fr;gap:36px}
   .honor-cols{grid-template-columns:1fr;gap:44px}
+  .aca-grid,.spread-grid{grid-template-columns:1fr}
   .gallery-cols{column-count:2}
   .stat-in{grid-template-columns:repeat(2,1fr);gap:28px}
   footer .foot-in{grid-template-columns:1fr;gap:32px}
@@ -151,6 +182,7 @@ footer{background:var(--ink-soft);color:#D8C7B0}
   .gallery-cols{column-count:1}
   .stat-in{padding:28px 20px}
   .role-tags span{font-size:13px}
+  .sec-no{font-size:40px;top:-10px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -177,6 +209,8 @@ footer{background:var(--ink-soft);color:#D8C7B0}
     <div class="nav-links">
       <a href="#about">关于我</a>
       <a href="#honors">执教战绩</a>
+      <a href="#academic">学术成果</a>
+      <a href="#spread">体育传播</a>
       <a href="#gallery">影像故事</a>
       <a href="#creed">理念</a>
     </div>
@@ -210,23 +244,24 @@ footer{background:var(--ink-soft);color:#D8C7B0}
 <!-- 数据条 -->
 <div class="stat-band">
   <div class="stat-in">
-    <div class="stat"><b>30</b><span>年体育从业</span></div>
-    <div class="stat"><b>5</b><span>东南亚锦标赛冠军</span></div>
-    <div class="stat"><b>U15</b><span>世界青年锦标赛冠军</span></div>
-    <div class="stat"><b>1st</b><span>泰国乒乓历史突破</span></div>
+    <div class="stat"><b data-count="30">0</b><span>年体育从业</span></div>
+    <div class="stat"><b data-count="5" data-suffix="+">0</b><span>国家运动健将</span></div>
+    <div class="stat"><b data-count="4" data-suffix="+">0</b><span>全国青少年冠军</span></div>
+    <div class="stat"><b data-prefix="U" data-count="15">0</b><span>世界青年锦标赛冠军</span></div>
   </div>
 </div>
 
 <!-- ============ 关于我 ============ -->
 <section class="block" id="about">
   <div class="sec-head reveal">
+    <span class="sec-no">01</span>
     <div class="k">ABOUT ME</div>
     <h2>关于我</h2>
     <div class="linebar"></div>
   </div>
   <div class="about-grid">
     <div class="about-text reveal">
-      <p>我是黄靖雅，一名拥有 30 年经验的体育从业者。从国家体育总局乒乓球高级教练，到高校体育学副教授；从带领学生在浙江省大学生赛场屡获金、银、铜，到受邀出任泰国乒协高级技术总监、帮助泰国乒乓球实现历史性突破——我始终相信，体育是一种跨越语言的教育。</p>
+      <p>我是黄靖雅，一名拥有 30 年经验的体育从业者。我曾被国家体育总局乒羽中心派往中国乒乓学校、中国乒乓球队全国青少年集训队任教，培养出 5 名以上国家运动健将、4 人以上获得全国青少年竞赛冠军。从国家体育总局乒乓球高级教练，到高校体育学副教授；从带领学生在浙江省大学生赛场屡获金、银、铜，到受邀出任泰国乒协高级技术总监、帮助泰国乒乓球实现历史性突破——我始终相信，体育是一种跨越语言的教育。</p>
       <p>2026 年 4 月，我作为澳门浙江大学校友会会员到访杭州浙江大学校友会，为母校深感自豪。自 2023 年起，我作为“一带一路”体育文化交流的一员，把中国的训练理念与教学技术带到泰国，与当地运动员一同站上亚运、奥运与世青赛的领奖台。</p>
       <p>赛场会变、技术会更新，我希望用持续的研究与实践，让更多人因科学运动而受益。</p>
     </div>
@@ -251,6 +286,7 @@ footer{background:var(--ink-soft);color:#D8C7B0}
 <section class="honors" id="honors">
   <div class="honors-in">
     <div class="sec-head reveal">
+      <span class="sec-no">02</span>
       <div class="k">COACHING RECORD</div>
       <h2>执教战绩</h2>
       <div class="linebar"></div>
@@ -269,13 +305,86 @@ footer{background:var(--ink-soft);color:#D8C7B0}
       <div class="honor-col reveal">
         <h3>国内耕耘 · 教学相长</h3>
         <ul class="timeline simple">
+          <li><div class="tt">国家体育总局乒羽中心派驻任教</div><div class="ds">中国乒乓学校、中国乒乓球队全国青少年集训队</div></li>
+          <li><div class="tt">培养 5+ 国家运动健将 · 4+ 全国青少年竞赛冠军</div></li>
           <li><div class="tt">国家体育总局乒乓球高级教练</div></li>
           <li><div class="tt">浙江省大学生体育竞赛 金 / 银 / 铜教练</div><div class="ds">多年省大学生乒乓球、飞镖锦标赛带队获奖</div></li>
           <li><div class="tt">国内首批匹克球官方持证教练</div></li>
           <li><div class="tt">全国大学生飞镖铜牌教练</div></li>
+          <li><div class="tt">赛事与社会服务</div><div class="ds">国际乒联学术大会 · G20 文体志愿者 · 亚洲杯裁判 · 省体育大会评委</div></li>
           <li><div class="tt">儿童运动心理课程专家讲师</div><div class="ds">浙江省妇联立项《特殊儿童家庭关爱服务》项目</div></li>
-          <li><div class="tt">王受昱 2011 全园少年乒乓球训练营纪录片出镜</div></li>
+          <li><div class="tt">王曼昱 2011 全园少年乒乓球训练营纪录片出镜</div></li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 学术成果 ============ -->
+<section class="block" id="academic">
+  <div class="sec-head reveal">
+    <span class="sec-no">03</span>
+    <div class="k">ACADEMIC WORKS</div>
+    <h2>学术成果</h2>
+    <div class="linebar"></div>
+  </div>
+  <div class="aca-grid">
+    <div class="aca-col reveal">
+      <h3>教材与著作</h3>
+      <ul>
+        <li>《中国青少年体育运动项目训练教学系列大纲 · 乒乓球教法教材》
+          <span class="src">人民体育出版社 · 负责技术训练内容（国家体育总局青少年乒乓球教学教材编写组成员）</span></li>
+        <li>《婴幼儿常见伤害预防与处理》
+          <span class="src">北京师范大学出版社</span></li>
+      </ul>
+    </div>
+    <div class="aca-col reveal">
+      <h3>会议论文 / 学术报告</h3>
+      <ul>
+        <li><span class="en">Analysis of the Role of Metacognition in Adolescent Table Tennis Awareness</span>
+          <span class="src">第 14 届国际乒联科学大会 ITTF Science Conference</span></li>
+        <li>《元认知测评在对抗性体育项目策略意识培养中的应用意义》
+          <span class="src">全国体育科学大会</span></li>
+        <li>《中国体育教练在东盟体育发展中的贡献》
+          <span class="src">东盟体育科学大会</span></li>
+      </ul>
+    </div>
+    <div class="aca-col reveal">
+      <h3>期刊论文</h3>
+      <ul>
+        <li>《青少年乒乓球运动员竞赛中临场指导的调适与探索》
+          <span class="src">《体育世界（学术版）》2014 年第 4 期</span></li>
+        <li>浙江省体育科学类期刊论文 1 篇</li>
+        <li>《体育世界（学术版）》省级期刊论文 1 篇</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 体育文化传播 ============ -->
+<section class="honors" id="spread">
+  <div class="honors-in">
+    <div class="sec-head reveal">
+      <span class="sec-no">04</span>
+      <div class="k">SPORTS CULTURE OUTREACH</div>
+      <h2>体育文化传播</h2>
+      <div class="linebar"></div>
+    </div>
+    <div class="spread-grid">
+      <div class="spread-card reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07A35" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div>
+        <h3>文兰书院讲座</h3>
+        <p>在温州龙湾文兰书院讲授《乒乓国球中的人生哲学》，以球喻理、以体育人。</p>
+      </div>
+      <div class="spread-card reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07A35" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+        <h3>校队走向社会</h3>
+        <p>带领温州大学乒乓球校队走进产业园、校友会与青少年课堂，开展教学友谊赛。</p>
+      </div>
+      <div class="spread-card reveal">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07A35" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+        <h3>校友圈体育纽带</h3>
+        <p>在浙大校友圈中担任体育文化交流者，组织匹克球、乒乓球等校友活动。</p>
       </div>
     </div>
   </div>
@@ -284,6 +393,7 @@ footer{background:var(--ink-soft);color:#D8C7B0}
 <!-- ============ 影像故事 ============ -->
 <section class="block" id="gallery">
   <div class="sec-head reveal">
+    <span class="sec-no">05</span>
     <div class="k">MOMENTS IN PICTURES</div>
     <h2>影像故事 · 珍贵瞬间</h2>
     <div class="linebar"></div>
@@ -297,7 +407,7 @@ footer{background:var(--ink-soft);color:#D8C7B0}
     <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/ocNBHHYA7p" alt="SEA Youth Brunei" src="https://aka.doubaocdn.com/s/ocNBHHYA7p"><div class="g-cap"><em>SEA YOUTH BRUNEI 2023</em>13–18 June · Tutong Sports Complex</div></div>
     <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/a9uGxkIVE5" alt="训练现场采访" src="https://aka.doubaocdn.com/s/a9uGxkIVE5"><div class="g-cap"><em>媒体采访</em>训练现场接受体育媒体专访</div></div>
     <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/y5pdaWGYpS" alt="ADA飞镖香港" src="https://aka.doubaocdn.com/s/y5pdaWGYpS"><div class="g-cap"><em>THE 18th ADA INTERNATIONAL DARTS TOUR</em>26–28 April 2024 · Hong Kong</div></div>
-    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/cB9xjuRYNX" alt="体育研讨会" src="https://aka.doubaocdn.com/s/cB9xjuRYNX"><div class="g-cap"><em>体育研讨会</em>与业界同仁交流研讨</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/cB9xjuRYNX" alt="体育研讨会" src="https://aka.doubaocdn.com/s/cB9xjuRYNX"><div class="g-cap"><em>体育研讨会</em>与阿里巴巴董事会主席 蔡崇信 等业界同仁交流研讨</div></div>
     <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/8Z10bFQVnz" alt="飞镖奖杯" src="https://aka.doubaocdn.com/s/8Z10bFQVnz"><div class="g-cap"><em>浙江省飞镖公开赛 · 高校组团体</em>第一名 / 第四名 · 2023 年 10 月云栖</div></div>
     <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/wr1dEgQpFW" alt="飞镖奖牌" src="https://aka.doubaocdn.com/s/wr1dEgQpFW"><div class="g-cap"><em>第 4 届中国大学生飞镖联赛</em>501 减分赛 · 女子甲组第三名</div></div>
     <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/5AhH8o3V0L" alt="2024乒乓球牌匾" src="https://aka.doubaocdn.com/s/5AhH8o3V0L"><div class="g-cap"><em>2024 浙江省大学生乒乓球锦标赛</em>丙组男子团体 · 第二名</div></div>
@@ -306,26 +416,20 @@ footer{background:var(--ink-soft);color:#D8C7B0}
     <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/KwX1USOqV3" alt="国旗下合影" src="https://aka.doubaocdn.com/s/KwX1USOqV3"><div class="g-cap"><em>国旗下的乒乓球队</em>全体队员大合影</div></div>
     <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/pdlvsvzMeX" alt="世青赛领奖台" src="https://aka.doubaocdn.com/s/pdlvsvzMeX"><div class="g-cap"><em>ITTF WORLD YOUTH CHAMPIONSHIPS 2025</em>Cluj-Napoca · 领奖台时刻</div></div>
     <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/b2HdDqDPel" alt="校园签球" src="https://aka.doubaocdn.com/s/b2HdDqDPel"><div class="g-cap"><em>走进校园</em>在乒乓球上为孩子们签名留念</div></div>
-    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/nV9i2Nv16C" alt="ADA飞镖香港" src="https://aka.doubaocdn.com/s/nV9i2Nv16C"><div class="g-cap"><em>THE 18th ADA INTERNATIONAL DARTS TOUR</em>26–28 April 2024 · Hong Kong</div></div>
-    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/cB9xjuRYNX" alt="体育研讨会" src="https://aka.doubaocdn.com/s/cB9xjuRYNX"><div class="g-cap"><em>体育研讨会</em>与业界同仁交流研讨</div></div>
-    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/8Z10bFQVnz" alt="飞镖奖杯" src="https://aka.doubaocdn.com/s/8Z10bFQVnz"><div class="g-cap"><em>浙江省飞镖公开赛 · 高校组团体</em>第一名 / 第四名 · 2023 年 10 月云栖</div></div>
-    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/wr1dEgQpFW" alt="飞镖奖牌" src="https://aka.doubaocdn.com/s/wr1dEgQpFW"><div class="g-cap"><em>第 4 届中国大学生飞镖联赛</em>501 减分赛 · 女子甲组第三名</div></div>
-    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/5AhH8o3V0L" alt="2024乒乓球牌匾" src="https://aka.doubaocdn.com/s/5AhH8o3V0L"><div class="g-cap"><em>2024 浙江省大学生乒乓球锦标赛</em>丙组男子团体 · 第二名</div></div>
-    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/kexNFGERVW" alt="2023乒乓球锦标赛" src="https://aka.doubaocdn.com/s/kexNFGERVW"><div class="g-cap"><em>2023 浙江省大学生乒乓球（甲丙丁组）锦标赛</em>省教育厅、省体育局主办</div></div>
-    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/KC3ewJelCI" alt="SEA冠军奖杯" src="https://aka.doubaocdn.com/s/KC3ewJelCI"><div class="g-cap"><em>SEA YOUTH CHAMPIONSHIP BRUNEI 2023</em>Girls U-15 Team Event · Champions 1st</div></div>
-    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/KwX1USOqV3" alt="国旗下合影" src="https://aka.doubaocdn.com/s/KwX1USOqV3"><div class="g-cap"><em>国旗下的乒乓球队</em>全体队员大合影</div></div>
-    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/pdlvsvzMeX" alt="世青赛领奖台" src="https://aka.doubaocdn.com/s/pdlvsvzMeX"><div class="g-cap"><em>ITTF WORLD YOUTH CHAMPIONSHIPS 2025</em>Cluj-Napoca · 领奖台时刻</div></div>
-    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/b2HdDqDPel" alt="校园签球" src="https://aka.doubaocdn.com/s/b2HdDqDPel"><div class="g-cap"><em>走进校园</em>在乒乓球上为孩子们签名留念</div></div>
-    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/nV9i2Nv16C" alt="ADA飞镖香港" src="https://aka.doubaocdn.com/s/nV9i2Nv16C"><div class="g-cap"><em>THE 18th ADA INTERNATIONAL DARTS TOUR</em>26–28 April 2024 · Hong Kong</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/nV9i2Nv16C" alt="奖杯证书" src="https://aka.doubaocdn.com/s/nV9i2Nv16C"><div class="g-cap"><em>荣誉年轮</em>历年奖杯与证书，围成一圈的坚持</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/xL2CD6SQhU" alt="专家讲师聘书" src="https://aka.doubaocdn.com/s/xL2CD6SQhU"><div class="g-cap"><em>专家讲师聘书 · 2020</em>《特殊儿童家庭关爱服务》儿童运动心理课程</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/X9huNVnxwT" alt="长三角体育节" src="https://aka.doubaocdn.com/s/X9huNVnxwT"><div class="g-cap"><em>第三届长三角体育节暨“杭垓杯”飞镖赛</em>全民健身奔共富 · 信心满怀向未来</div></div>
+
   </div>
 </section>
 
 <!-- ============ 理念 ============ -->
 <section class="creed" id="creed">
-  <div class="creed-in">
+  <div class="creed-in reveal">
+    <div class="creed-no">06 · PHILOSOPHY</div>
     <div class="big">保持自信<i> · </i>持续学习</div>
     <div class="en">STAY CONFIDENT · KEEP LEARNING</div>
-    <p>三十年，乒乓球教会我的不只是胜负。它让我相信，体育可以成为教育的桥梁，让不同语言、不同文化的人彼此理解。</p>
+    <p>赛场会变、技术会更新，唯有自信与学习让人持续向前。我希望把这份信念，传递给每一个我带过的运动员和学生。</p>
     <div class="contact-cta">
       <a href="tel:18657130388" class="cta-btn">电话 186 5713 0388</a>
       <a href="mailto:siying2022@qq.com" class="cta-btn ghost">siying2022@qq.com</a>
@@ -343,6 +447,7 @@ footer{background:var(--ink-soft);color:#D8C7B0}
     <div class="foot-meta">
       <div><b>研究方向：</b>大众运动健康 · 体育教育升学 · 智慧体育实践</div>
       <div><b>社会职务：</b>泰国乒协高级技术总监</div>
+      <div><b>学术身份：</b>国家体育总局青少年乒乓球教材编写组成员</div>
       <div><b>校友身份：</b>澳门浙江大学校友会会员</div>
       <div><b>联系电话：</b><a href="tel:18657130388">186 5713 0388</a></div>
       <div><b>电子邮箱：</b><a href="mailto:siying2022@qq.com">siying2022@qq.com</a></div>
@@ -413,6 +518,23 @@ footer{background:var(--ink-soft);color:#D8C7B0}
       ctx.beginPath();ctx.fillStyle='rgba(247,180,110,'+q[4]+')';ctx.arc(q[0],q[1],1.6,0,Math.PI*2);ctx.fill();
     }
 
+    // 第二条弧到达终点后，乒乓球轻巧弹跳三次再落定
+    if(t>=4.8&&t<5.4){
+      var bt=(t-4.8)/0.6, seg=1/3;
+      var bn=Math.min(2,Math.floor(bt/seg)), bl=(bt-bn*seg)/seg;
+      var bh=50*Math.pow(0.42,bn);
+      var bx=arcs[1][4][0]*W, by=arcs[1][4][1]*H-4*bh*bl*(1-bl);
+      if(Math.random()>0.45)sparks.push([bx,by,(Math.random()-0.5)*0.4,-0.5,0.7]);
+      var bg=ctx.createRadialGradient(bx,by,0,bx,by,16);
+      bg.addColorStop(0,'rgba(255,224,176,1)');
+      bg.addColorStop(0.5,'rgba(240,140,60,0.92)');
+      bg.addColorStop(1,'rgba(240,130,55,0)');
+      ctx.save();
+      ctx.shadowColor='rgba(240,130,55,.9)';ctx.shadowBlur=14;
+      ctx.fillStyle=bg;ctx.beginPath();ctx.arc(bx,by,7,0,Math.PI*2);ctx.fill();
+      ctx.restore();
+    }
+
     if(t>1.3)iq1.classList.add('show');
     if(t>1.9)iq2.classList.add('show');
     if(t>4.5){iq1.classList.remove('show');iq2.classList.remove('show');}
@@ -468,6 +590,28 @@ footer{background:var(--ink-soft);color:#D8C7B0}
     });
   },{rootMargin:'300px 0px'});
   imgs.forEach(function(im){io.observe(im);});
+})();
+
+/* ============ 四、数据条：轻快滚动计数 ============ */
+(function(){
+  var nums=document.querySelectorAll('.stat b[data-count]');
+  function finalText(el){return (el.dataset.prefix||'')+el.dataset.count+(el.dataset.suffix||'');}
+  function run(el){
+    var target=+el.dataset.count,prefix=el.dataset.prefix||'',suffix=el.dataset.suffix||'',t0=null;
+    function step(now){
+      if(!t0)t0=now;
+      var p=Math.min(1,(now-t0)/1200);
+      var e=1-Math.pow(1-p,3);
+      el.textContent=prefix+Math.round(e*target)+suffix;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if(!('IntersectionObserver' in window)){nums.forEach(function(n){n.textContent=finalText(n);});return;}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){if(en.isIntersecting){run(en.target);io.unobserve(en.target);}});
+  },{threshold:.5});
+  nums.forEach(function(n){io.observe(n);});
 })();
 </script>
 
