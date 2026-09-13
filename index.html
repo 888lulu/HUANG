@@ -1,0 +1,474 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黄靖雅 · 高级体育教练 | Huang Jingya</title>
+<meta name="description" content="黄靖雅，高级体育教练、海外教学技术博士、原体育学副教授、泰国乒协高级技术总监。30年体育从业，研究方向：大众运动健康、体育教育升学、智慧体育实践。">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Oswald:wght@400;500;600&display=swap">
+<style>
+:root{
+  --orange:#E07A35;
+  --orange-deep:#C85A23;
+  --apricot:#F4A95F;
+  --ivory:#FAF5EE;
+  --ivory-deep:#F3EADD;
+  --ink:#241D18;
+  --ink-soft:#33291F;
+  --gray:#8A7E72;
+  --line:#E7DCCE;
+  --serif:"Noto Serif SC","Songti SC",serif;
+  --sans:"Noto Sans SC","PingFang SC",sans-serif;
+  --num:"Oswald","Noto Sans SC",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--ivory);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ============ 开场动画 ============ */
+#intro{position:fixed;inset:0;z-index:100;background:#1A1410;transition:opacity .6s ease}
+#intro.done{opacity:0;pointer-events:none}
+#introCanvas{position:absolute;inset:0;width:100%;height:100%}
+.intro-quotes{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:24px}
+.iq{opacity:0;transform:translateY(14px);transition:opacity 1s ease,transform 1s ease,letter-spacing 1.4s ease}
+.iq.show{opacity:1;transform:translateY(0)}
+.iq1{font-family:var(--serif);font-weight:700;font-size:clamp(28px,5.4vw,52px);color:#F6E4CE;letter-spacing:.32em;text-indent:.32em}
+.iq1 .dot{color:var(--orange);padding:0 .14em}
+.iq2{font-family:var(--num);font-size:clamp(12px,1.8vw,16px);letter-spacing:.42em;text-indent:.42em;color:var(--apricot)}
+#introSkip{position:absolute;top:22px;right:24px;background:transparent;border:1px solid rgba(244,169,95,.5);color:var(--apricot);padding:9px 20px;font-family:var(--sans);font-size:13px;letter-spacing:.2em;border-radius:2px;cursor:pointer;min-height:44px}
+#introSkip:hover{background:rgba(224,122,53,.18)}
+
+/* ============ 导航 ============ */
+nav{position:sticky;top:0;z-index:50;background:rgba(250,245,238,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1180px;margin:0 auto;padding:0 28px;height:68px;display:flex;align-items:center;gap:36px}
+.brand{font-family:var(--serif);font-weight:900;font-size:20px;letter-spacing:.1em}
+.brand span{color:var(--orange-deep)}
+.nav-links{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{padding:8px 14px;font-size:14.5px;color:var(--ink-soft);white-space:nowrap;border-bottom:2px solid transparent;transition:.25s;min-height:44px;display:flex;align-items:center}
+.nav-links a:hover{color:var(--orange-deep);border-bottom-color:var(--orange)}
+
+/* ============ Hero ============ */
+.hero{background:var(--ink);color:#F6EBDD;position:relative;overflow:hidden}
+.hero-arc{position:absolute;inset:0;pointer-events:none}
+.hero-in{max-width:1180px;margin:0 auto;padding:92px 28px 100px;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;position:relative}
+.eyebrow{font-family:var(--num);letter-spacing:.4em;color:var(--apricot);font-size:14px;margin-bottom:22px}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(44px,7vw,84px);line-height:1.12;letter-spacing:.06em}
+.hero h1 em{font-style:normal;color:var(--orange);display:block;font-family:var(--num);font-weight:500;font-size:clamp(16px,2.2vw,24px);letter-spacing:.34em;margin-top:14px}
+.role-tags{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 26px}
+.role-tags span{border:1px solid rgba(244,169,95,.4);padding:7px 16px;font-size:14px;border-radius:2px;color:#F0DCC2}
+.hero p{color:#C9B8A2;max-width:520px;font-size:16px}
+.hero-photo{position:relative}
+.hero-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px;filter:saturate(.92)}
+.hero-photo::after{content:"";position:absolute;inset:0;border:1px solid rgba(244,169,95,.35);border-radius:3px;transform:translate(14px,14px);pointer-events:none}
+
+/* 数据条 */
+.stat-band{background:var(--orange-deep)}
+.stat-in{max-width:1180px;margin:0 auto;padding:34px 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat{color:#FDEFDE;text-align:center}
+.stat b{font-family:var(--num);font-size:clamp(30px,4vw,44px);font-weight:600;display:block;line-height:1}
+.stat span{font-size:13.5px;letter-spacing:.14em;opacity:.88;margin-top:8px;display:block}
+
+/* ============ 通用区块 ============ */
+section.block{max-width:1180px;margin:0 auto;padding:96px 28px}
+.sec-head{margin-bottom:52px}
+.sec-head .k{font-family:var(--num);letter-spacing:.36em;color:var(--orange-deep);font-size:13px}
+.sec-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,4vw,42px);margin-top:10px;letter-spacing:.04em}
+.sec-head .linebar{width:54px;height:3px;background:var(--orange);margin-top:18px;border-radius:2px}
+
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+.about-text p{margin-bottom:18px;font-size:16.5px;color:var(--ink-soft)}
+.focus-list{display:flex;flex-direction:column;gap:16px}
+.focus-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:26px 28px;transition:.3s}
+.focus-card:hover{transform:translateX(6px);border-color:var(--orange);box-shadow:0 12px 30px rgba(200,90,35,.1)}
+.focus-card h3{font-family:var(--serif);font-size:20px;color:var(--orange-deep);display:flex;align-items:center;gap:12px}
+.focus-card h3 svg{flex:none}
+.focus-card p{font-size:14.5px;color:var(--gray);margin-top:8px}
+
+/* ============ 荣誉 ============ */
+.honors{background:var(--ivory-deep)}
+.honors-in{max-width:1180px;margin:0 auto;padding:96px 28px}
+.honor-cols{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.honor-col h3{font-family:var(--serif);font-size:23px;margin-bottom:26px;padding-bottom:14px;border-bottom:2px solid var(--orange)}
+.timeline{list-style:none;display:flex;flex-direction:column;gap:22px}
+.timeline li{position:relative;padding-left:26px}
+.timeline li::before{content:"";position:absolute;left:2px;top:9px;width:9px;height:9px;background:var(--orange);border-radius:50%}
+.timeline li::after{content:"";position:absolute;left:6px;top:22px;bottom:-18px;width:1px;background:var(--line)}
+.timeline li:last-child::after{display:none}
+.timeline .yr{font-family:var(--num);color:var(--orange-deep);font-size:14px;letter-spacing:.12em}
+.timeline .tt{font-weight:500;font-size:16px;margin:2px 0 2px}
+
+/* ============ 影像墙 ============ */
+.gallery-cols{column-count:3;column-gap:18px}
+.g-item{break-inside:avoid;margin-bottom:18px;border-radius:4px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.g-item img{width:100%;transition:transform .6s ease,opacity .7s ease;opacity:0;background:var(--ivory-deep)}
+.g-item img.loaded{opacity:1}
+.g-item:hover img.loaded{transform:scale(1.05)}
+.g-cap{padding:13px 16px;font-size:13px;color:var(--ink-soft);line-height:1.6}
+.g-cap em{display:block;font-family:var(--num);font-size:11.5px;color:var(--orange-deep);letter-spacing:.08em;font-style:normal;margin-bottom:3px}
+
+/* ============ 理念 ============ */
+.creed{background:var(--ink);color:#F3E6D4;text-align:center;position:relative;overflow:hidden}
+.creed-in{max-width:860px;margin:0 auto;padding:108px 28px;position:relative}
+.creed .big{font-family:var(--serif);font-weight:900;font-size:clamp(30px,5.4vw,54px);letter-spacing:.2em;text-indent:.2em}
+.creed .big i{color:var(--orange);font-style:normal}
+.creed .en{font-family:var(--num);letter-spacing:.34em;color:var(--apricot);margin-top:18px;font-size:14px}
+.creed p{margin-top:34px;color:#C4B39C;font-size:16px}
+.contact-cta{margin-top:40px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta-btn{min-height:48px;display:inline-flex;align-items:center;padding:12px 30px;background:var(--orange);color:#241D18;font-weight:500;border-radius:3px;letter-spacing:.06em;transition:.3s}
+.cta-btn:hover{background:var(--apricot);transform:translateY(-2px)}
+.cta-btn.ghost{background:transparent;color:var(--apricot);border:1px solid rgba(244,169,95,.5)}
+.cta-btn.ghost:hover{background:rgba(224,122,53,.18)}
+
+/* ============ 页脚 ============ */
+footer{background:var(--ink-soft);color:#D8C7B0}
+.foot-in{max-width:1180px;margin:0 auto;padding:70px 28px 40px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px}
+.foot-brand{font-family:var(--serif);font-weight:900;font-size:26px}
+.foot-brand span{color:var(--orange)}
+.foot-in p{font-size:14.5px;margin-top:14px;color:#B7A68F;max-width:440px}
+.foot-meta{font-size:14px;line-height:2.1}
+.foot-meta b{color:var(--apricot);font-weight:500}
+.copyright{max-width:1180px;margin:0 auto;padding:22px 28px;border-top:1px solid rgba(255,255,255,.08);font-size:12.5px;color:#97866F}
+
+/* ============ 滚动揭示 ============ */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ 响应式 ============ */
+@media(max-width:920px){
+  .hero-in{grid-template-columns:1fr;gap:44px;padding:70px 24px 76px}
+  .hero-photo{max-width:420px}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .honor-cols{grid-template-columns:1fr;gap:44px}
+  .gallery-cols{column-count:2}
+  .stat-in{grid-template-columns:repeat(2,1fr);gap:28px}
+  footer .foot-in{grid-template-columns:1fr;gap:32px}
+}
+@media(max-width:560px){
+  .nav-in{padding:0 18px;gap:18px;height:60px}
+  .brand{font-size:17px}
+  section.block,.honors-in{padding:68px 20px}
+  .gallery-cols{column-count:1}
+  .stat-in{padding:28px 20px}
+  .role-tags span{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 开场动画 ============ -->
+<div id="intro">
+  <canvas id="introCanvas" width="1366" height="768"></canvas>
+  <div class="intro-quotes">
+    <div class="iq iq1 show">保持自信<span class="dot">·</span>持续学习</div>
+    <div class="iq iq2 show">STAY CONFIDENT · KEEP LEARNING</div>
+  </div>
+  <button id="introSkip">跳过 SKIP</button>
+</div>
+
+<!-- ============ 导航 ============ -->
+<nav>
+  <div class="nav-in">
+    <div class="brand">黄靖雅<span> · HJY</span></div>
+    <div class="nav-links">
+      <a href="#about">关于我</a>
+      <a href="#honors">执教战绩</a>
+      <a href="#gallery">影像故事</a>
+      <a href="#creed">理念</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ Hero ============ -->
+<header class="hero">
+  <svg class="hero-arc" viewBox="0 0 1000 600" preserveAspectRatio="none">
+    <path d="M-20,520 Q300,40 720,300" fill="none" stroke="rgba(224,122,53,.28)" stroke-width="2"></path>
+    <path d="M260,620 Q620,120 1040,420" fill="none" stroke="rgba(244,169,95,.14)" stroke-width="1.5"></path>
+  </svg>
+  <div class="hero-in">
+    <div>
+      <div class="eyebrow">30 YEARS · A LIFETIME IN SPORTS</div>
+      <h1>黄靖雅<em>HUANG JINGYA</em></h1>
+      <div class="role-tags">
+        <span>高级体育教练</span>
+        <span>海外教学技术博士</span>
+        <span>原体育学副教授</span>
+        <span>泰国乒协高级技术总监</span>
+      </div>
+      <p>以乒乓球为语言，从浙江走向世界。三十年执教，做大众健康与体育教育的长期主义者，也做“一带一路”上的体育文化交流者。</p>
+    </div>
+    <div class="hero-photo">
+      <img src="https://aka.doubaocdn.com/s/iZlLMaEXYq" alt="黄靖雅讲台演讲" class="loaded">
+    </div>
+  </div>
+</header>
+
+<!-- 数据条 -->
+<div class="stat-band">
+  <div class="stat-in">
+    <div class="stat"><b>30</b><span>年体育从业</span></div>
+    <div class="stat"><b>5</b><span>东南亚锦标赛冠军</span></div>
+    <div class="stat"><b>U15</b><span>世界青年锦标赛冠军</span></div>
+    <div class="stat"><b>1st</b><span>泰国乒乓历史突破</span></div>
+  </div>
+</div>
+
+<!-- ============ 关于我 ============ -->
+<section class="block" id="about">
+  <div class="sec-head reveal">
+    <div class="k">ABOUT ME</div>
+    <h2>关于我</h2>
+    <div class="linebar"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>我是黄靖雅，一名拥有 30 年经验的体育从业者。从国家体育总局乒乓球高级教练，到高校体育学副教授；从带领学生在浙江省大学生赛场屡获金、银、铜，到受邀出任泰国乒协高级技术总监、帮助泰国乒乓球实现历史性突破——我始终相信，体育是一种跨越语言的教育。</p>
+      <p>2026 年 4 月，我作为澳门浙江大学校友会会员到访杭州浙江大学校友会，为母校深感自豪。自 2023 年起，我作为“一带一路”体育文化交流的一员，把中国的训练理念与教学技术带到泰国，与当地运动员一同站上亚运、奥运与世青赛的领奖台。</p>
+      <p>赛场会变、技术会更新，我希望用持续的研究与实践，让更多人因科学运动而受益。</p>
+    </div>
+    <div class="focus-list">
+      <div class="focus-card reveal">
+        <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07A35" stroke-width="1.8"><path d="M20.8 5.3a5.5 5.5 0 0 0-7.8 0L12 6.3l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 23l7.8-8.9 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>大众运动健康</h3>
+        <p>让科学运动走进每个人的日常，以运动促进身心健康。</p>
+      </div>
+      <div class="focus-card reveal">
+        <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07A35" stroke-width="1.8"><path d="M22 10L12 5 2 10l10 5 10-5z"></path><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"></path></svg>体育教育升学</h3>
+        <p>以竞技与学业双通道，托举青少年的成长与升学。</p>
+      </div>
+      <div class="focus-card reveal">
+        <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E07A35" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>智慧体育实践</h3>
+        <p>用新技术重塑训练、教学与赛事，探索体育的未来形态。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 执教战绩 ============ -->
+<section class="honors" id="honors">
+  <div class="honors-in">
+    <div class="sec-head reveal">
+      <div class="k">COACHING RECORD</div>
+      <h2>执教战绩</h2>
+      <div class="linebar"></div>
+    </div>
+    <div class="honor-cols">
+      <div class="honor-col reveal">
+        <h3>国际赛场 · 历史突破</h3>
+        <ul class="timeline">
+          <li><div class="yr">2023 — NOW</div><div class="tt">泰国乒协高级技术总监</div><div class="ds">受邀担任 TTFA 高级技术总监，“一带一路”体育文化交流</div></li>
+          <li><div class="yr">2023</div><div class="tt">杭州亚运会 女子团体铜牌</div><div class="ds">帮助泰国实现亚运会乒乓球项目突破</div></li>
+          <li><div class="yr">2023</div><div class="tt">东南亚锦标赛 五项冠军</div><div class="ds">SEA Youth 文莱 U-15 女团等五项夺冠</div></li>
+          <li><div class="yr">2024</div><div class="tt">巴黎奥运会 团体第五名</div><div class="ds">带领泰国队登上奥运赛场</div></li>
+          <li><div class="yr">2025</div><div class="tt">世界青年锦标赛 U15 混双冠军</div><div class="ds">ITTF World Youth Championships，再创该国历史</div></li>
+        </ul>
+      </div>
+      <div class="honor-col reveal">
+        <h3>国内耕耘 · 教学相长</h3>
+        <ul class="timeline simple">
+          <li><div class="tt">国家体育总局乒乓球高级教练</div></li>
+          <li><div class="tt">浙江省大学生体育竞赛 金 / 银 / 铜教练</div><div class="ds">多年省大学生乒乓球、飞镖锦标赛带队获奖</div></li>
+          <li><div class="tt">国内首批匹克球官方持证教练</div></li>
+          <li><div class="tt">全国大学生飞镖铜牌教练</div></li>
+          <li><div class="tt">儿童运动心理课程专家讲师</div><div class="ds">浙江省妇联立项《特殊儿童家庭关爱服务》项目</div></li>
+          <li><div class="tt">王受昱 2011 全园少年乒乓球训练营纪录片出镜</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 影像故事 ============ -->
+<section class="block" id="gallery">
+  <div class="sec-head reveal">
+    <div class="k">MOMENTS IN PICTURES</div>
+    <h2>影像故事 · 珍贵瞬间</h2>
+    <div class="linebar"></div>
+  </div>
+  <div class="gallery-cols reveal">
+
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/yLGAiGDdvO" alt="浙江大学校友会" src="https://aka.doubaocdn.com/s/yLGAiGDdvO"><div class="g-cap"><em>杭州浙江大学校友会</em>2026 年 4 月到访母校，为浙大学子身份自豪</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/4EFlaGkQnQ" alt="论坛演讲" src="https://aka.doubaocdn.com/s/4EFlaGkQnQ"><div class="g-cap"><em>KEYNOTE SPEECH</em>学术与行业论坛主题演讲</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/wMD4rxlYaj" alt="科创中国" src="https://aka.doubaocdn.com/s/wMD4rxlYaj"><div class="g-cap"><em>科创中国 INNOVATION CHINA</em>中国生物物理学会相关学术会议分享</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/5LPA4DCc1m" alt="泰国乒协聘书" src="https://aka.doubaocdn.com/s/5LPA4DCc1m"><div class="g-cap"><em>TTFA 泰国乒乓球协会</em>高级技术总监任命文件</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/ocNBHHYA7p" alt="SEA Youth Brunei" src="https://aka.doubaocdn.com/s/ocNBHHYA7p"><div class="g-cap"><em>SEA YOUTH BRUNEI 2023</em>13–18 June · Tutong Sports Complex</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/a9uGxkIVE5" alt="训练现场采访" src="https://aka.doubaocdn.com/s/a9uGxkIVE5"><div class="g-cap"><em>媒体采访</em>训练现场接受体育媒体专访</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/y5pdaWGYpS" alt="ADA飞镖香港" src="https://aka.doubaocdn.com/s/y5pdaWGYpS"><div class="g-cap"><em>THE 18th ADA INTERNATIONAL DARTS TOUR</em>26–28 April 2024 · Hong Kong</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/cB9xjuRYNX" alt="体育研讨会" src="https://aka.doubaocdn.com/s/cB9xjuRYNX"><div class="g-cap"><em>体育研讨会</em>与业界同仁交流研讨</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/8Z10bFQVnz" alt="飞镖奖杯" src="https://aka.doubaocdn.com/s/8Z10bFQVnz"><div class="g-cap"><em>浙江省飞镖公开赛 · 高校组团体</em>第一名 / 第四名 · 2023 年 10 月云栖</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/wr1dEgQpFW" alt="飞镖奖牌" src="https://aka.doubaocdn.com/s/wr1dEgQpFW"><div class="g-cap"><em>第 4 届中国大学生飞镖联赛</em>501 减分赛 · 女子甲组第三名</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/5AhH8o3V0L" alt="2024乒乓球牌匾" src="https://aka.doubaocdn.com/s/5AhH8o3V0L"><div class="g-cap"><em>2024 浙江省大学生乒乓球锦标赛</em>丙组男子团体 · 第二名</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/kexNFGERVW" alt="2023乒乓球锦标赛" src="https://aka.doubaocdn.com/s/kexNFGERVW"><div class="g-cap"><em>2023 浙江省大学生乒乓球（甲丙丁组）锦标赛</em>省教育厅、省体育局主办</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/KC3ewJelCI" alt="SEA冠军奖杯" src="https://aka.doubaocdn.com/s/KC3ewJelCI"><div class="g-cap"><em>SEA YOUTH CHAMPIONSHIP BRUNEI 2023</em>Girls U-15 Team Event · Champions 1st</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/KwX1USOqV3" alt="国旗下合影" src="https://aka.doubaocdn.com/s/KwX1USOqV3"><div class="g-cap"><em>国旗下的乒乓球队</em>全体队员大合影</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/pdlvsvzMeX" alt="世青赛领奖台" src="https://aka.doubaocdn.com/s/pdlvsvzMeX"><div class="g-cap"><em>ITTF WORLD YOUTH CHAMPIONSHIPS 2025</em>Cluj-Napoca · 领奖台时刻</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/b2HdDqDPel" alt="校园签球" src="https://aka.doubaocdn.com/s/b2HdDqDPel"><div class="g-cap"><em>走进校园</em>在乒乓球上为孩子们签名留念</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/nV9i2Nv16C" alt="ADA飞镖香港" src="https://aka.doubaocdn.com/s/nV9i2Nv16C"><div class="g-cap"><em>THE 18th ADA INTERNATIONAL DARTS TOUR</em>26–28 April 2024 · Hong Kong</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/cB9xjuRYNX" alt="体育研讨会" src="https://aka.doubaocdn.com/s/cB9xjuRYNX"><div class="g-cap"><em>体育研讨会</em>与业界同仁交流研讨</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/8Z10bFQVnz" alt="飞镖奖杯" src="https://aka.doubaocdn.com/s/8Z10bFQVnz"><div class="g-cap"><em>浙江省飞镖公开赛 · 高校组团体</em>第一名 / 第四名 · 2023 年 10 月云栖</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/wr1dEgQpFW" alt="飞镖奖牌" src="https://aka.doubaocdn.com/s/wr1dEgQpFW"><div class="g-cap"><em>第 4 届中国大学生飞镖联赛</em>501 减分赛 · 女子甲组第三名</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/5AhH8o3V0L" alt="2024乒乓球牌匾" src="https://aka.doubaocdn.com/s/5AhH8o3V0L"><div class="g-cap"><em>2024 浙江省大学生乒乓球锦标赛</em>丙组男子团体 · 第二名</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/kexNFGERVW" alt="2023乒乓球锦标赛" src="https://aka.doubaocdn.com/s/kexNFGERVW"><div class="g-cap"><em>2023 浙江省大学生乒乓球（甲丙丁组）锦标赛</em>省教育厅、省体育局主办</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/KC3ewJelCI" alt="SEA冠军奖杯" src="https://aka.doubaocdn.com/s/KC3ewJelCI"><div class="g-cap"><em>SEA YOUTH CHAMPIONSHIP BRUNEI 2023</em>Girls U-15 Team Event · Champions 1st</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/KwX1USOqV3" alt="国旗下合影" src="https://aka.doubaocdn.com/s/KwX1USOqV3"><div class="g-cap"><em>国旗下的乒乓球队</em>全体队员大合影</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/pdlvsvzMeX" alt="世青赛领奖台" src="https://aka.doubaocdn.com/s/pdlvsvzMeX"><div class="g-cap"><em>ITTF WORLD YOUTH CHAMPIONSHIPS 2025</em>Cluj-Napoca · 领奖台时刻</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/b2HdDqDPel" alt="校园签球" src="https://aka.doubaocdn.com/s/b2HdDqDPel"><div class="g-cap"><em>走进校园</em>在乒乓球上为孩子们签名留念</div></div>
+    <div class="g-item"><img data-src="https://aka.doubaocdn.com/s/nV9i2Nv16C" alt="ADA飞镖香港" src="https://aka.doubaocdn.com/s/nV9i2Nv16C"><div class="g-cap"><em>THE 18th ADA INTERNATIONAL DARTS TOUR</em>26–28 April 2024 · Hong Kong</div></div>
+  </div>
+</section>
+
+<!-- ============ 理念 ============ -->
+<section class="creed" id="creed">
+  <div class="creed-in">
+    <div class="big">保持自信<i> · </i>持续学习</div>
+    <div class="en">STAY CONFIDENT · KEEP LEARNING</div>
+    <p>三十年，乒乓球教会我的不只是胜负。它让我相信，体育可以成为教育的桥梁，让不同语言、不同文化的人彼此理解。</p>
+    <div class="contact-cta">
+      <a href="tel:18657130388" class="cta-btn">电话 186 5713 0388</a>
+      <a href="mailto:siying2022@qq.com" class="cta-btn ghost">siying2022@qq.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer>
+  <div class="foot-in">
+    <div>
+      <div class="foot-brand">黄靖雅<span> · Huang Jingya</span></div>
+      <p>高级体育教练 · 海外教学技术博士 · 原体育学副教授。以体育为教育，以交流为桥梁，三十年步履不停。</p>
+    </div>
+    <div class="foot-meta">
+      <div><b>研究方向：</b>大众运动健康 · 体育教育升学 · 智慧体育实践</div>
+      <div><b>社会职务：</b>泰国乒协高级技术总监</div>
+      <div><b>校友身份：</b>澳门浙江大学校友会会员</div>
+      <div><b>联系电话：</b><a href="tel:18657130388">186 5713 0388</a></div>
+      <div><b>电子邮箱：</b><a href="mailto:siying2022@qq.com">siying2022@qq.com</a></div>
+    </div>
+  </div>
+  <div class="copyright">© 2026 黄靖雅 Huang Jingya · 保持自信，持续学习</div>
+</footer>
+
+<script>
+/* ============ 一、开场动画引擎 ============ */
+(function(){
+  var intro=document.getElementById('intro');
+  var cv=document.getElementById('introCanvas');
+  var ctx=cv.getContext('2d');
+  var W,H,DPR;
+  function size(){
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    W=window.innerWidth;H=window.innerHeight;
+    cv.width=W*DPR;cv.height=H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  size();
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var start=performance.now(),finished=false;
+  var iq1=document.querySelector('.iq1'),iq2=document.querySelector('.iq2');
+  var sparks=[];
+
+  function qbez(p0,p1,p2,t){
+    var u=1-t;
+    return[u*u*p0[0]+2*u*t*p1[0]+t*t*p2[0],u*u*p0[1]+2*u*t*p1[1]+t*t*p2[1]];
+  }
+  var arcs=[
+    [0.0,1.4,[0.10,0.84],[0.42,0.10],[0.90,0.58]],
+    [3.4,4.8,[0.92,0.28],[0.50,0.98],[0.08,0.40]]
+  ];
+
+  function frame(now){
+    var t=(now-start)/1000;
+    ctx.fillStyle='rgba(26,20,16,0.26)';ctx.fillRect(0,0,W,H);
+
+    for(var a=0;a<arcs.length;a++){
+      var A=arcs[a];
+      if(t>=A[0]&&t<A[1]+0.8){
+        var p=Math.min(1,(t-A[0])/(A[1]-A[0]));
+        var P0=[A[2][0]*W,A[2][1]*H],P1=[A[3][0]*W,A[3][1]*H],P2=[A[4][0]*W,A[4][1]*H];
+        ctx.beginPath();
+        for(var s=0;s<=42;s++){
+          var pt=qbez(P0,P1,P2,p*s/42);
+          if(s===0)ctx.moveTo(pt[0],pt[1]);else ctx.lineTo(pt[0],pt[1]);
+        }
+        ctx.strokeStyle='rgba(240,140,60,0.8)';ctx.lineWidth=2.2;
+        ctx.shadowColor='rgba(240,130,55,0.9)';ctx.shadowBlur=16;ctx.stroke();ctx.shadowBlur=0;
+
+        if(p<1){
+          var hd=qbez(P0,P1,P2,p);
+          sparks.push([hd[0],hd[1],(Math.random()-0.5)*0.5,(Math.random()-0.5)*0.5,1]);
+          var g=ctx.createRadialGradient(hd[0],hd[1],0,hd[0],hd[1],20);
+          g.addColorStop(0,'rgba(255,214,156,1)');g.addColorStop(1,'rgba(240,130,55,0)');
+          ctx.fillStyle=g;ctx.beginPath();ctx.arc(hd[0],hd[1],20,0,Math.PI*2);ctx.fill();
+        }
+      }
+    }
+
+    for(var i=sparks.length-1;i>=0;i--){
+      var q=sparks[i];
+      q[0]+=q[2];q[1]+=q[3];q[3]+=0.008;q[4]-=0.014;
+      if(q[4]<=0){sparks.splice(i,1);continue;}
+      ctx.beginPath();ctx.fillStyle='rgba(247,180,110,'+q[4]+')';ctx.arc(q[0],q[1],1.6,0,Math.PI*2);ctx.fill();
+    }
+
+    if(t>1.3)iq1.classList.add('show');
+    if(t>1.9)iq2.classList.add('show');
+    if(t>4.5){iq1.classList.remove('show');iq2.classList.remove('show');}
+
+    if(t>=5.4){finish();return;}
+    requestAnimationFrame(frame);
+  }
+  function finish(){
+    if(finished)return;finished=true;
+    intro.classList.add('done');
+    setTimeout(function(){intro.style.display='none';},620);
+  }
+  document.getElementById('introSkip').addEventListener('click',function(){
+    start=performance.now()-5400;finish();
+  });
+  window.addEventListener('resize',size);
+  if(reduced){finish();}else{requestAnimationFrame(frame);}
+})();
+
+/* ============ 二、滚动揭示 ============ */
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in');});return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+    });
+  },{threshold:.14});
+  els.forEach(function(e){io.observe(e);});
+})();
+
+/* ============ 三、影像墙：视口懒加载 + 失败自动重试 ============ */
+(function(){
+  var imgs=Array.prototype.slice.call(document.querySelectorAll('.g-item img'));
+  function load(im){
+    if(im.dataset.busy==='1')return;
+    im.dataset.busy='1';
+    var tries=+im.dataset.tries||0;
+    im.dataset.tries=tries+1;
+    im.onerror=function(){
+      im.dataset.busy='0';
+      if((+im.dataset.tries)<5){setTimeout(function(){load(im);},350*(+im.dataset.tries));}
+    };
+    im.onload=function(){im.classList.add('loaded');};
+    im.src=im.dataset.src;
+  }
+  if(!('IntersectionObserver' in window)){imgs.forEach(load);return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){load(en.target);io.unobserve(en.target);}
+    });
+  },{rootMargin:'300px 0px'});
+  imgs.forEach(function(im){io.observe(im);});
+})();
+</script>
+
+</body></html>
